@@ -1,0 +1,47 @@
+ER DIAGRAM
+
++-----------+     +-------------+     +----------+
+|  Patient  |-----| Appointment |-----|  Doctor  |
++-----------+     +-------------+     +----------+
+     |                                     |
+     |                                     |
+     |                                     |
+     |                                 +--------+
+     |                                 |  Dept  |
+     |                                 +--------+
+     |
+     |
++----------+
+|  Room    |
++----------+
+
+ENTITIES
+
+Entity	        Description
+
+Patient	        Stores patient information
+Doctor	        Stores doctor information
+Appointment	    Keeps track of doctor-patient appointments
+Department	    Grouping of doctors based on specialization
+Room	        Hospital room info (if patient admitted)
+
+RELATIONSHIPS
+
+Patient - Appointment	1 to Many	One patient can have many appointments
+Doctor - Appointment	1 to Many	One doctor can meet many patients
+Doctor - Department	Many to One	Many doctors can belong to one department
+Patient - Room	Many to One	Many patients can be assigned to one room (or NULL if not admitted)
+
+FLOWCHART
+
+[Patient Registers]
+       ↓
+[Patient Books Appointment]
+       ↓
+[Doctor Checks Appointment]
+       ↓
+[Doctor Treats Patient]
+       ↓
+[Patient Gets Admitted (optional)]
+       ↓
+[Patient Assigned to Room]

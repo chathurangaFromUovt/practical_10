@@ -1,10 +1,11 @@
 package com.hospitalapp.hospitalmanagement.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -12,9 +13,14 @@ import lombok.Setter;
 public class Room {
 
     @Id
-    private int id;
-    @Column(nullable = false)
-    private int room_number;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer roomId;
+
+    private String roomNumber;
     private String type;
     private String status;
+
+    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
+    private List<Patient> patients = new ArrayList<>();
+
 }
