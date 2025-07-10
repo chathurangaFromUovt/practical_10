@@ -21,7 +21,7 @@ public class Department {
     private String description;
 
 
-    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "department_id", cascade = CascadeType.ALL)
     @JsonBackReference
     private List <Doctor> doctors = new ArrayList<>();
 
